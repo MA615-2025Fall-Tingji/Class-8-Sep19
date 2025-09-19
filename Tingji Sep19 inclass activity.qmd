@@ -6,6 +6,19 @@ format:
 editor: visual
 ---
 
+```{r}
+#| label: setup
+#| echo: false
+#| messages: false
+#| warning: false
+
+library(tidyverse)
+library(esquisse)
+library(lorem)
+options(scipen = 999, digits = 3)
+```
+
+
 #Description
 The Loblolly data frame has 84 rows and 3 columns of records of the growth of Loblolly pine trees.
 
@@ -20,26 +33,17 @@ Seed
 an ordered factor indicating the seed source for the tree. The ordering is according to increasing maximum height.
 
 ```{r}
-#| label: setup
-#| echo: false
-#| messages: false
-#| warning: false
-
-library(tidyverse)
-library(esquisse)
-library(lorem)
-options(scipen = 999, digits = 3)
+#| label: show the data
+head(Loblolly)
 ```
+
+<p style="page-break-after:always"> </p>
 
 ```{r}
 #| label: main data chunk
 #| echo: true
 
-
-head(Loblolly)
-
 model <- lm(height ~ age, data = Loblolly)
-coef(model)
 cat("Tree height =",coef(model)[1],"+",coef(model)[2],"*Age")
 summary(model)
 
@@ -50,5 +54,8 @@ ggplot(Loblolly,aes(x = age, y = height, color = Seed, group = Seed)) +
   theme_classic()
 
 ```
-Interpret: 
+#Interpret: 
 From the graph and summary, we can tell tree's height has a strong linear relationship with tree's age. 
+
+#Repo URL:
+https://github.com/MA615-2025Fall-Tingji/Class-8-Sep19
