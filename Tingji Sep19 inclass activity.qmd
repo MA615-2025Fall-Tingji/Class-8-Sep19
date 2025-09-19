@@ -32,6 +32,10 @@ options(scipen = 999, digits = 3)
 ```
 
 ```{r}
+#| label: main data chunk
+#| echo: true
+
+
 head(Loblolly)
 
 model <- lm(height ~ age, data = Loblolly)
